@@ -1,0 +1,53 @@
+{
+    // "tasks": [
+    //     {
+    //         "type": "shell",
+    //         "label": "C/C++: g++.exe build active file",
+    //         "command": "C:\\environment\\mingw64\\bin\\g++.exe",
+    //         "args": [
+    //             "-g",
+    //             "${file}",
+    //             "-o",
+    //             "${fileDirname}\\${fileBasenameNoExtension}.exe"
+    //         ],
+    //         "options": {
+    //             "cwd": "C:\\environment\\mingw64\\bin"
+    //         },
+    //         "problemMatcher": [
+    //             "$gcc"
+    //         ],
+    //         "group": {
+    //             "kind": "build",
+    //             "isDefault": true
+    //         }
+    //     }
+    // ],
+    // "version": "2.0.0"
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "windows": {
+                "command": "g++",
+                "args": [
+                    "-ggdb",
+                    "\"${file}\"",
+                    "--std=c++11",
+                    "-o",
+                    "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
+                ]
+            }
+        }
+    ]
+}
