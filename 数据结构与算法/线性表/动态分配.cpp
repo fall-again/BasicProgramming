@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: HZQ
+ * @Date: 2020-11-10 20:06:52
+ * @LastEditTime: 2020-11-12 21:34:56
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #define InitSize 10 /* 表顺序表的初始长度 */
@@ -16,7 +23,16 @@ void InitList(SeqList &L)
     L.MaxSize = InitSize;
 }
 
-/* 增加动态数组的长度 */
+/**
+ * @name: IncreaseSize
+ * @msg: 增加动态数组的长度
+ * @param {L--线性表，len--准备增加的长度}
+ * @return {}
+ * @Author: HZQ
+ * @Date: 2020-11-12 21:09:31
+ * @Modifier: 
+ * @ModifyReason: 
+ */
 void IncreaseSize(SeqList &L, int len)
 {
     int *p = L.data;
