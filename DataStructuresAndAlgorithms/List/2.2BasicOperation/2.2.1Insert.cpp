@@ -1,8 +1,8 @@
 /*
- * @Description: çº¿æ€§è¡¨çš„åŸºæœ¬æ“ä½œ--æ’å…¥;éƒ½æ˜¯ç”¨é™æ€è¡¨å®ç°çš„
+ * @Description: ÏßĞÔ±íµÄ»ù±¾²Ù×÷--²åÈë;¶¼ÊÇÓÃ¾²Ì¬±íÊµÏÖµÄ
  * @Author: HZQ
  * @Date: 2020-11-16 20:57:10
- * @LastEditTime: 2020-11-18 21:46:34
+ * @LastEditTime: 2020-11-18 22:20:54
  */
 
 #include <stdio.h>
@@ -15,29 +15,50 @@ typedef struct
 
 void InitList(Sqlist &L)
 {
-    for (int i = 0; i < MaxSize; i++)
+    L.length = 0;
+    for (int i = 0; i < 6; i++)
     {
         L.data[i] = i;
+        L.length++;
     }
-    L.length = 0;
 }
 
-void Insert(Sqlist &L)
+bool ListInsert(Sqlist &L, int i, int e)
 {
-    for (int i = 0; i < 5; i++)
+    /* ÅĞ¶ÏÊÇ·ñ¿ÉÒÔ²åÈëÔªËØ£¬¼ÓÇ¿³ÌĞò½¡×³ĞÔ*/
+    if (i < 1 || i > L.length + 1)
+        return false; /* ÅĞ¶ÏiµÄ·¶Î§ÊÇ·ñÓĞĞ§*/
+    if (L.length >= MaxSize)
+        return false; /* µ±Ç°´æ´¢¿Õ¼äÒÑÂú£¬²»ÄÜ²åÈë*/
+    /* ½«µÚi¸öÔªËØµÄÖµÏòºóÒÆ */
+    for (int j = L.length; j >= i; j--)
     {
-        L.data[i] = i;
+        L.data[j] = L.data[j - 1];
     }
+    L.data[i - 1] = e;
+    L.length++;
+    return true;
 }
 
 int main(void)
 {
     Sqlist L;
     InitList(L);
-    for (int i = 0; i < MaxSize; i++)
+    for (int i = 0; i < L.length; i++)
     {
         printf("L.data[%d]=%d\n", i, L.data[i]);
-        L.length++;
+    }
+    printf("L.length=%d\n", L.length);
+    printf("----------------------\n");
+    bool result = ListInsert(L, 9, 5);
+    if (result == true)
+        printf("²åÈë³É¹¦\n");
+    if (result == false)
+        printf("²åÈëÊ§°Ü\n");
+
+    for (int i = 0; i < L.length; i++)
+    {
+        printf("L.data[%d]=%d\n", i, L.data[i]);
     }
     printf("L.length=%d\n", L.length);
     getchar();
