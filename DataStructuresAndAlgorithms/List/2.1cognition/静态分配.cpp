@@ -1,3 +1,9 @@
+/*
+ * @Description: 
+ * @Author: HZQ
+ * @Date: 2020-11-10 19:48:11
+ * @LastEditTime: 2020-11-18 20:36:17
+ */
 #include <stdio.h>
 #define MaxSize 10 /* 定义线性表的最大长度 */
 typedef struct
