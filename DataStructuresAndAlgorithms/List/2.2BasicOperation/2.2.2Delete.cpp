@@ -1,10 +1,9 @@
 /*
- * @Description: 线性表的基本操作--插入;都是用静态表实现的
+ * @Description: 线性表基本操作--删除
  * @Author: HZQ
- * @Date: 2020-11-16 20:57:10
- * @LastEditTime: 2020-11-20 19:05:33
+ * @Date: 2020-11-20 19:05:15
+ * @LastEditTime: 2020-11-20 19:19:45
  */
-
 #include <stdio.h>
 #define MaxSize 10
 typedef struct
@@ -23,20 +22,19 @@ void InitList(SqList &L)
     }
 }
 
-bool ListInsert(SqList &L, int i, int e)
+bool ListDelete(SqList &L, int i, int &e)
 {
     /* 判断是否可以插入元素，加强程序健壮性*/
     if (i < 1 || i > L.length + 1)
         return false; /* 判断i的范围是否有效*/
-    if (L.length >= MaxSize)
-        return false; /* 当前存储空间已满，不能插入*/
-    /* 将第i个元素的值向后移 */
-    for (int j = L.length; j >= i; j--)
+
+    e = L.data[i - 1];
+    /* 将第i个元素的值向前移 */
+    for (int j = i; j < L.length; j++)
     {
-        L.data[j] = L.data[j - 1];
+        L.data[j - 1] = L.data[j];
     }
-    L.data[i - 1] = e;
-    L.length++;
+    L.length--;
     return true;
 }
 
@@ -44,6 +42,7 @@ int main(void)
 {
     SqList L;
     InitList(L);
+    int e = 0;
 
     for (int i = 0; i < L.length; i++)
     {
@@ -52,12 +51,12 @@ int main(void)
     printf("L.length=%d\n", L.length);
     printf("----------------------\n");
 
-    bool result = ListInsert(L, 5, 5);
+    bool result = ListDelete(L, 4, e);
 
     if (result == true)
-        printf("插入成功\n");
+        printf("删除成功,删除的元素为%d\n", e);
     if (result == false)
-        printf("插入失败\n");
+        printf("删除失败\n");
 
     for (int i = 0; i < L.length; i++)
     {
