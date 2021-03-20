@@ -4,5 +4,9 @@
         "struct",
         "LastEditTime"
     ],
-    "files.autoGuessEncoding": true
+    "files.autoGuessEncoding": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
 }
